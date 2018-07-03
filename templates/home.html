@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    停车系统|首页
+{% endblock %}
+{% load staticfiles %}
+{% block content %}
+
+<div style="width:100%;text-align: center;margin: 0 auto;position: absolute;">
+    <!-- 登录界面 -->
+    
+    <div id="windows1">
+        <div id="loginbox">
+            <h1>欢迎来到停车管理系统</h1>
+            <h2 class="normal_text">当前用户：{{ user.username }}</h2>
+            
+            <h4 class="normal_text">要使用本系统，请先登录本系统</h4>
+            <a class="normal_text" href="{% url 'login' %}">登陆</a>
+            <a class="normal_text" href="{% url 'register' %}">注册</a>
+            <div>
+                <p class="normal_text">当前剩余车位：<b> {{ car_pos_num }} </b>个</p>
+                {% if user.is_authenticated %}
+                    <a class="normal_text" href="/carposition/car_posi_index" type="button" >预定车位</a>        
+                {% else %}
+                    <a class="normal_text" type="button" disabled="disabled">预定车位[未登录]</a>
+                {% endif %}
+            </div>
+        </div>        
+    </div>
+    </div>            
+</div>
+
+<div id="templatemo_banner_slide" class="container_wapper">
+    <div class="camera_wrap camera_emboss" id="camera_slide">
+        <!-- 背景图片 -->
+        <div data-src="{% static '/login/images/banner_slide_01.jpg' %}"></div>
+        <div data-src="{% static '/login/images/banner_slide_02.jpg'  %}"></div>
+        <div data-src="{% static '/login/images/banner_slide_03.jpg'  %}"></div>
+        <div data-src="{% static '/login/images/banner_slide_04.jpg'  %}"></div>
+        <div data-src="{% static '/login/images/banner_slide_05.jpg'  %}"></div>
+    </div>
+    <!-- #camera_wrap_3 -->
+</div>
+<!-- <form action="" method="POST">
+    {% csrf_token %}
+    {% for field in login_form %}
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        <p>{{ field.errors.as_text }}</p>
+    {% endfor %}
+    <span>{{ login_form.non_field_errors }}</span>
+    <input type="submit" value="登录">
+</form> -->
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    停车系统|
+{% endblock %}
+{% load staticfiles %}
+{% block content %}
+
+<div style="width:100%;text-align: center;margin: 0 auto;position: absolute;">
+    <!-- 登录界面 -->
+    <div id="windows1">
+        <div id="loginbox">
+                {% for item in positions_list %}
+                    <h4 > <a style="color:white" href="/carposition/order_position/{{ item.pk }}"> {{ item.position_num}}</a> </h4>
+                {% endfor %}
+            <!-- <h2 style="color:white">当前剩余车位：</h2>
+            <table class="table">
+                    <thead>                        
+                                
+                    </thead>
+                    <tbody>
+                        {% for item in positions_list %}
+                        <td>
+                            <h4 > <a style="color:white" href="/carposition/order_position/{{ item.pk }}"> {{ item.position_num}}</a> </h4>
+                        </td>
+                        {% endfor %}
+                    </tbody>
+            </table>                     -->
+        </div>        
+    </div>            
+</div>
+
+<div id="templatemo_banner_slide" class="container_wapper">
+    <div class="camera_wrap camera_emboss" id="camera_slide">
+        <!-- 背景图片 -->
+        <div data-src="{% static '/login/images/banner_slide_01.jpg' %}"></div>
+        <div data-src="{% static '/login/images/banner_slide_02.jpg'  %}"></div>
+        <div data-src="{% static '/login/images/banner_slide_03.jpg'  %}"></div>
+        <div data-src="{% static '/login/images/banner_slide_04.jpg'  %}"></div>
+        <div data-src="{% static '/login/images/banner_slide_05.jpg'  %}"></div>
+    </div>
+    <!-- #camera_wrap_3 -->
+</div>
+<!-- <form action="" method="POST">
+    {% csrf_token %}
+    {% for field in login_form %}
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        <p>{{ field.errors.as_text }}</p>
+    {% endfor %}
+    <span>{{ login_form.non_field_errors }}</span>
+    <input type="submit" value="登录">
+</form> -->
+{% endblock %}
